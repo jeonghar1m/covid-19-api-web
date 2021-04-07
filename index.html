@@ -13,6 +13,8 @@
     </header>
     <section>
         <script>
+            // 어제 날짜를 구한다.
+            // 오늘 날짜를 넘겨주면 API가 작동하지 않음.
             let yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date);
             if((yesterday.getMonth() + 1) >= 10 && yesterday.getDate() < 10)
                 yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+"0"+yesterday.getDate();
