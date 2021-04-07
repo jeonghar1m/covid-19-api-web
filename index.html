@@ -23,10 +23,9 @@
             else
                 yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+""+yesterday.getDate();
 
-            const date = yesterday;
             $(function() {
                 $.ajax({
-                    url: 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=cUOPX%2BSd5nQS89x3FKfp1T7EwpB0ntAMuLIJaKdVYXlRshVmXeY4TNxIhFXDnxAYwobzjIE6TnDwBAEAXox2FA%3D%3D&pageNo=1&numOfRows=10&startCreateDt='+date+'&endCreateDt='+date,
+                    url: 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=cUOPX%2BSd5nQS89x3FKfp1T7EwpB0ntAMuLIJaKdVYXlRshVmXeY4TNxIhFXDnxAYwobzjIE6TnDwBAEAXox2FA%3D%3D&pageNo=1&numOfRows=10&startCreateDt='+yesterday+'&endCreateDt='+yesterday,
                     dataType: 'xml',
                     success: function(data) {
                         $(data).find('item').each(function() {
