@@ -11,39 +11,39 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <script>
-            var city = "<?php echo $city; ?>"; // php에서 변수 호출
-            let yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date);
-            if((yesterday.getMonth() + 1) >= 10 && yesterday.getDate() < 10)
-                yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+"0"+yesterday.getDate();
-            else if((yesterday.getMonth() + 1) < 10 && yesterday.getDate() >= 10)
-                yesterday = yesterday.getFullYear()+"0"+(yesterday.getMonth() + 1)+""+yesterday.getDate();
-            else if((yesterday.getMonth() + 1) < 10 && yesterday.getDate() < 10)
-                yesterday = yesterday.getFullYear()+"0"+(yesterday.getMonth() + 1)+"0"+yesterday.getDate();
-            else
-                yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+""+yesterday.getDate();
+        var city = "<?php echo $city; ?>"; // php에서 변수 호출
+        let yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date);
+        if((yesterday.getMonth() + 1) >= 10 && yesterday.getDate() < 10)
+            yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+"0"+yesterday.getDate();
+        else if((yesterday.getMonth() + 1) < 10 && yesterday.getDate() >= 10)
+            yesterday = yesterday.getFullYear()+"0"+(yesterday.getMonth() + 1)+""+yesterday.getDate();
+        else if((yesterday.getMonth() + 1) < 10 && yesterday.getDate() < 10)
+            yesterday = yesterday.getFullYear()+"0"+(yesterday.getMonth() + 1)+"0"+yesterday.getDate();
+        else
+            yesterday = yesterday.getFullYear()+""+(yesterday.getMonth() + 1)+""+yesterday.getDate();
 
-            $(function() {
-                $.ajax({
-                    url: 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=cUOPX%2BSd5nQS89x3FKfp1T7EwpB0ntAMuLIJaKdVYXlRshVmXeY4TNxIhFXDnxAYwobzjIE6TnDwBAEAXox2FA%3D%3D&pageNo=1&numOfRows=10&startCreateDt='+yesterday+'&endCreateDt='+yesterday,
-                    dataType: 'xml',
-                    success: function(data) {
-                        $(data).find('item').each(function() {
-                            var gubun = $('gubun', this).text();
-                            var decide = $('defCnt', this).text();
-                            var clear = $('isolClearCnt', this).text();
-                            var death = $('deathCnt', this).text();
-                            var care = $('isolIngCnt', this).text();
+        $(function() {
+            $.ajax({
+                url: 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=cUOPX%2BSd5nQS89x3FKfp1T7EwpB0ntAMuLIJaKdVYXlRshVmXeY4TNxIhFXDnxAYwobzjIE6TnDwBAEAXox2FA%3D%3D&pageNo=1&numOfRows=10&startCreateDt='+yesterday+'&endCreateDt='+yesterday,
+                dataType: 'xml',
+                success: function(data) {
+                    $(data).find('item').each(function() {
+                        var gubun = $('gubun', this).text();
+                        var decide = $('defCnt', this).text();
+                        var clear = $('isolClearCnt', this).text();
+                        var death = $('deathCnt', this).text();
+                        var care = $('isolIngCnt', this).text();
 
-                            if(gubun == city)
-                                var text = "<p class=\"content\"><b>누적 확진자:</b> " + decide + "명</p>"
-                                + "<p class=\"content\"><b>누적 완치자:</b> " + clear + "명</p>"
-                                + "<p class=\"content\"><b>치료 중:</b> " + care + "명</p>"
-                                + "<p class=\"content\"><b>누적 사망자:</b> " + death + "명</p>";
-                            $('MAIN').append(text);
-                        });
-                    }
-                });
-            })
+                        if(gubun == city)
+                            var text = "<p class=\"content\"><b>누적 확진자:</b> " + decide + "명</p>"
+                            + "<p class=\"content\"><b>누적 완치자:</b> " + clear + "명</p>"
+                            + "<p class=\"content\"><b>치료 중:</b> " + care + "명</p>"
+                            + "<p class=\"content\"><b>누적 사망자:</b> " + death + "명</p>";
+                        $('MAIN').append(text);
+                    });
+                }
+            });
+        })
     </script>
 </head>
 <body>
