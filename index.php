@@ -76,7 +76,7 @@
                         </td>
                     </tr>
                 </table>
-                <input type="submit" />
+                <input type="submit" value="확인" />
         </fieldset>
         </form>
     </section>
