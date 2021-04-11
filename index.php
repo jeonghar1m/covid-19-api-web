@@ -6,13 +6,7 @@
     <title>코로나19 감염자 현황</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-</head>
-<body>
-    <header>
-        <span id="title_name"><h1>코로나19 현황 조회하기</h1></span>
-    </header>
-    <section>
-        <script>
+    <script>
             // 어제 날짜를 구한다.
             // 오늘 날짜를 넘겨주면 API가 작동하지 않음.
             let yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date);
@@ -41,12 +35,51 @@
                             + "<p class=\"content\"><b>검사 중:</b> " + exam + "명</p>"
                             + "<p class=\"content\"><b>치료 중:</b> " + care + "명</p>"
                             + "<p class=\"content\"><b>누적 사망자:</b> " + death + "명</p>";
-                            $('body').append(text);
+                            $('MAIN').append(text);
                         });
                     }
                 });
             })
-        </script>
+    </script>
+</head>
+<body>
+    <header>
+        <span id="title_name"><h1>코로나19 현황 조회하기</h1></span>
+    </header>
+    <section>
+        <MAIN></MAIN>
+        <form action="result.php" method="get">
+            <fieldset>
+                <legend>도시 선택</legend>
+                <table>
+                    <tr>
+                        <td>도시</td>
+                        <td>
+                            <select name="city">
+                                <option value="서울">서울</option>
+                                <option value="제주">제주</option>
+                                <option value="경남">경남</option>
+                                <option value="경북">경북</option>
+                                <option value="전남">전남</option>
+                                <option value="전북">전북</option>
+                                <option value="충남">충남</option>
+                                <option value="충북">충북</option>
+                                <option value="강원">강원</option>
+                                <option value="경기">경기</option>
+                                <option value="세종">세종</option>
+                                <option value="울산">울산</option>
+                                <option value="대전">대전</option>
+                                <option value="광주">광주</option>
+                                <option value="인천">인천</option>
+                                <option value="대구">대구</option>
+                                <option value="부산">부산</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" />
+        </fieldset>
+        </form>
     </section>
 </body>
 </html>
