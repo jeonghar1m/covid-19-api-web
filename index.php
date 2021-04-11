@@ -53,7 +53,6 @@
                 <legend>도시 선택</legend>
                 <table>
                     <tr>
-                        <td>도시</td>
                         <td>
                             <select name="city">
                                 <option value="서울">서울</option>
