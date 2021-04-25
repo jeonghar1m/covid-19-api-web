@@ -65,7 +65,7 @@
                 return response.json();
             })
             .then ( (data) => {
-                decide.innerText = "누적 확진자: " + data.object.body.items.item[flag].defCnt;
+                decide.innerText = "누적 확진자: " + data.object.body.items.item[dataIndex].defCnt;
             });
         }
     </script>
