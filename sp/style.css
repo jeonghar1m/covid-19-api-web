@@ -1,0 +1,6 @@
+body {margin:15% auto;}
+header{text-align: center;}
+section{text-align: center;}
+table {margin: 0 auto;}
+table > tr > td {margin:1% 30%}
+.content {text-align: center;}
