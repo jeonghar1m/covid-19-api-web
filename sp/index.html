@@ -18,24 +18,24 @@
             <table>
                 <tr>
                     <td>
-                        <input type="button" value="합계" />
-                        <input type="button" value="서울" />
-                        <input type="button" value="제주" />
-                        <input type="button" value="경남" />
-                        <input type="button" value="경북" />
-                        <input type="button" value="전남" />
-                        <input type="button" value="전북" />
-                        <input type="button" value="충남" />
-                        <input type="button" value="충북" />
-                        <input type="button" value="강원" />
-                        <input type="button" value="경기" />
-                        <input type="button" value="세종" />
-                        <input type="button" value="울산" />
-                        <input type="button" value="대전" />
-                        <input type="button" value="광주" />
-                        <input type="button" value="인천" />
-                        <input type="button" value="대구" />
-                        <input type="button" value="부산" />
+                        <input type="button" value="합계" onclick="ajax(0);" />
+                        <input type="button" value="서울" onclick="ajax(1);" />
+                        <input type="button" value="제주" onclick="ajax(2);" />
+                        <input type="button" value="경남" onclick="ajax(3);" />
+                        <input type="button" value="경북" onclick="ajax(4);" />
+                        <input type="button" value="전남" onclick="ajax(5);" />
+                        <input type="button" value="전북" onclick="ajax(6);" />
+                        <input type="button" value="충남" onclick="ajax(7);" />
+                        <input type="button" value="충북" onclick="ajax(8);" />
+                        <input type="button" value="강원" onclick="ajax(9);" />
+                        <input type="button" value="경기" onclick="ajax(10);" />
+                        <input type="button" value="세종" onclick="ajax(11);" />
+                        <input type="button" value="울산" onclick="ajax(12);" />
+                        <input type="button" value="대전" onclick="ajax(13);" />
+                        <input type="button" value="광주" onclick="ajax(14);" />
+                        <input type="button" value="인천" onclick="ajax(15);" />
+                        <input type="button" value="대구" onclick="ajax(16);" />
+                        <input type="button" value="부산" onclick="ajax(17);" />
                     </td>
                 </tr>
             </table>
@@ -46,32 +46,19 @@
         <p id="care"></p>
     </section>
     <script>
-        var button = document.getElementsByTagName("input");
-        var flag = -1;
+        var button = document.querySelectorAll('input');
         var decide = document.querySelector('#decide');
         var clear = $('#clear');
         var death = $('#death');
         var care = $('#care');
 
-        function ajax() {
-            if(button[0].onclick) flag = 0;
-            else if(button[1].onclick) flag = 1;
-            else if(button[2].onclick) flag = 2;
-            else if(button[3].onclick) flag = 3;
-            else if(button[4].onclick) flag = 4;
-            else if(button[5].onclick) flag = 5;
-            else if(button[6].onclick) flag = 6;
-            else if(button[7].onclick) flag = 7;
-            else if(button[8].onclick) flag = 8;
-            else if(button[9].onclick) flag = 9;
-            else if(button[10].onclick) flag = 10;
-            else if(button[11].onclick) flag = 11;
-            else if(button[12].onclick) flag = 12;
-            else if(button[13].onclick) flag = 13;
-            else if(button[14].onclick) flag = 14;
-            else if(button[15].onclick) flag = 15;
-            else if(button[16].onclick) flag = 16;
-            else if(button[17].onclick) flag = 17;
+        function ajax(flag) {
+            var dataIndex = 0;
+            console.log(button[flag].value);
+
+            if(flag == 0)   dataIndex = 18; // 합계
+            else if(flag == 1)  dataIndex = 17; // 서울
+            else dataIndex = flag - 1;
 
             fetch('result.php')
             .then( (response) => {
@@ -81,7 +68,6 @@
                 decide.innerText = "누적 확진자: " + data.object.body.items.item[flag].defCnt;
             });
         }
-        button.onclick = ajax;
     </script>
 </body>
 </html>
