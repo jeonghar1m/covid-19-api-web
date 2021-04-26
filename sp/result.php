@@ -19,9 +19,14 @@
     curl_close($ch);
 
     //var_dump($response);
+    //var_dump(simplexml_load_string($response));
+    $xml = simplexml_load_string($response);
+    $json = json_encode($xml);
+    $array = json_decode($json, TRUE);
+    var_dump($array);
 
-    $object = simplexml_load_string($response);
-    // $items = $object->body->items->item[1]->gubun;
-    $items = $object;
-    var_dump($items);
+    //$object = simplexml_load_string($response);
+    //$items = $object->body->items->item[1]->gubun;
+    //$items = $object;
+    //var_dump($items);
 ?>
