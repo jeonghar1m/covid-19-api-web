@@ -52,13 +52,13 @@
         var death = $('#death');
         var care = $('#care');
 
-        function ajax(flag) {
+        function ajax(buttonIndex) {
             var dataIndex = 0;
-            console.log(button[flag].value);
+            console.log(button[buttonIndex].value);
 
-            if(flag == 0)   dataIndex = 18; // 합계
-            else if(flag == 1)  dataIndex = 17; // 서울
-            else dataIndex = flag - 1;
+            if(buttonIndex == 0)   dataIndex = 18; // 합계
+            else if(buttonIndex == 1)  dataIndex = 17; // 서울
+            else dataIndex = buttonIndex - 1;
 
             fetch('result.php')
             .then( (response) => {
