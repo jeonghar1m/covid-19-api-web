@@ -21,9 +21,8 @@
     //var_dump($response);
     //var_dump(simplexml_load_string($response));
     $xml = simplexml_load_string($response);
-    $json = json_encode($xml);
-    $array = json_decode($json, TRUE);
-    var_dump($array);
+    $json = json_encode($xml -> body);
+    echo $json;
 
     //$object = simplexml_load_string($response);
     //$items = $object->body->items->item[1]->gubun;

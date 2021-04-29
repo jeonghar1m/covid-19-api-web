@@ -4,3 +4,4 @@ section{text-align: center;}
 table {margin: 0 auto;}
 table > tr > td {margin:1% 30%}
 .content {text-align: center;}
+p#copy {margin:1% 30%;}
