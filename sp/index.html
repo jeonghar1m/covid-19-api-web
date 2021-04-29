@@ -18,7 +18,7 @@
                 <tr>
                     <td id="cities">
                         <script>
-                            const cities = ["합계", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산",
+                            const cities = ["전국", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산",
                             "대전", "광주", "인천", "대구", "부산"];
                             cities.forEach( (city) => {
                                 $("#cities").append(
@@ -42,7 +42,11 @@
         getResult();
         
         $('#cities input[type=button]').on('click', function(value) {
-            city = $(this).val();   // button의 value를 지역변수 city에 대입.
+            if($(this).val() == "전국")
+                city = "합계";
+            else
+                city = $(this).val();   // button의 value를 지역변수 city에 대입.
+                
             getResult();
         })
 
