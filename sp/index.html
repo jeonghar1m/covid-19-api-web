@@ -38,10 +38,16 @@
     </footer>
     <script>
         var button = document.querySelectorAll('input');
+        var city = "합계";  // 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
+        getResult();
         
         $('#cities input[type=button]').on('click', function(value) {
             city = $(this).val();   // button의 value를 지역변수 city에 대입.
-            fetch('result.php')
+            getResult();
+        })
+
+        function getResult() {
+        fetch('result.php')
             .then( (response) => {
                 return response.json();
             })
@@ -66,7 +72,7 @@
                     )
                 })
             });
-        })
+        }
     </script>
 </body>
 </html>
