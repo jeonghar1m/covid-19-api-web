@@ -31,7 +31,7 @@
                 </tr>
             </table>
         </fieldset>
-        <ul id="result">
+        <div id="result">
         </ul>
     </section>
     <footer>
@@ -47,13 +47,14 @@
                 return response.json();
             })
             .then ( (data) => {
-                let ul = $('#result');
+                let result = $('#result');
                 let items = data.items.item;
                 let cityData = items.filter ( (item) => item.gubun ==  city );
+
+                $("#result").empty();
                 
                 cityData.forEach( (item) => {
-                    console.log(item.defCnt, item.gubun);
-                    ul.append(
+                    result.append(
                         '<p class=\"content\"><b>추가 확진자:</b> ' + item.incDec + ' </p>',
                         '<p class=\"content\"><b>누적 확진자:</b> ' + item.defCnt + ' </p>',
                         '<p class=\"content\"><b>누적 완치자:</b> ' + item.isolClearCnt + ' </p>',
