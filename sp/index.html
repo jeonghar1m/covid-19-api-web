@@ -66,15 +66,12 @@
                             function PrintButton() {
                                 $("#cities").empty();
 
-                                if(lang == '한국어') {
+                                if(lang == '한국어')
                                     cities = ["전국", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산", "대전", "광주", "인천", "대구", "부산"];
-                                }
-                                else if(lang == 'English') {
+                                else if(lang == 'English')
                                     cities = ["Total", "Seoul", "Jeju", "Gyeongsangnam-do", "Gyeongsangbuk-do", "Jeollanam-do", "Jeollabuk-do", "Chungcheongnam-do", "Chungcheongbuk-do", "Gangwon-do", "Gyeonggi-do", "Sejong", "Ulsan", "Daejeon", "Gwangju", "Incheon", "Daegu", "Busan"];
-                                }
-                                else if(lang == "中文") {
+                                else if(lang == "中文")
                                     cities = ["合计", "首尔", "济州", "庆南", "庆北", "全南", "全北", "忠南", "忠北", "江原", "京畿", "世宗", "蔚山", "大田", "光州", "仁川", "大邱", "釜山"];
-                                }
 
                                 cities.forEach( (city) => {
                                     $("#cities").append(
