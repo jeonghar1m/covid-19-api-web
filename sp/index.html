@@ -19,7 +19,21 @@
                 })
             </script>
         </div>
-        <span id="title_name"><h1>코로나19 현황 조회하기</h1></span>
+        <div id="title_name"><h1>코로나19 현황 조회하기</h1></div>
+        <script>
+            var lang = '한국어';
+
+            $('#lang_button input[type=button]').on('click', function(value) {
+                if($(this).val() == '한국어') {
+                    $('#title_name').empty();
+                    $('#title_name').prepend('<h1>코로나19 현황 조회하기</h1>');
+                }
+                else if($(this).val() == 'English') {
+                    $('#title_name').empty();
+                    $('#title_name').prepend('<h1>Covid19 Status</h1>');
+                }
+            })
+        </script>
     </header>
     <section>
         <fieldset>
@@ -126,7 +140,7 @@
                                 '<p class=\"content\"><b>누적 사망자:</b> ' + item.deathCnt + ' </p>',
                                 '<p class=\"content\"><b>해외 유입자:</b> ' + item.overFlowCnt + ' </p>',
                                 '<p class=\"content\">' + item.stdDay + '기준 </p>'
-                            )
+                            );
                         }
                         else if(lang == "English") {
                             result.prepend('<h2 class=\"content\">' + city + "'s Covid-19 infomations");
@@ -138,7 +152,7 @@
                                 '<p class=\"content\"><b>Accumulate Deaths:</b> ' + item.deathCnt + ' </p>',
                                 '<p class=\"content\"><b>Overseas inflow:</b> ' + item.overFlowCnt + ' </p>',
                                 '<p class=\"content\">As of ' + item.stdDay + '</p>'
-                            )
+                            );
                         }
                     }
                 )
