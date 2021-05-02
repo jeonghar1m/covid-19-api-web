@@ -1,5 +1,6 @@
 body {margin:15% auto;}
-header{text-align: center;}
+#title_name{text-align: center;}
+div#lang_button{text-align: right;}
 section{text-align: center;}
 table {margin: 0 auto;}
 table > tr > td {margin:1% 30%}
