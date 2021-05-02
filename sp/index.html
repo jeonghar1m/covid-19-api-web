@@ -11,7 +11,7 @@
     <header>
         <div id="lang_button">
             <script>
-                const langs = ['한국어', 'English'];
+                const langs = ['한국어', 'English', '中文'];
                 langs.forEach((lang)=> {
                     $("#lang_button").append(
                         '<input type="button" value="' + lang + '" />'
@@ -54,6 +54,17 @@
 
                                     lang = "English";
                                 }
+                                else if($(this).val() == "中文") {
+                                    $('title').empty();
+                                    $('legend').empty();
+                                    $('#title_name').empty();
+
+                                    $('title').prepend('COVID-19 感染者状况');
+                                    $('legend').prepend('城市选择');
+                                    $('#title_name').prepend('<h1>COVID-19 查询状态</h1>');
+
+                                    lang = "中文";  
+                                }
 
                                 PrintButton();
                                     
@@ -64,12 +75,13 @@
                                 $("#cities").empty();
 
                                 if(lang == '한국어') {
-                                    cities = ["전국", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산",
-                                    "대전", "광주", "인천", "대구", "부산"];
+                                    cities = ["전국", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산", "대전", "광주", "인천", "대구", "부산"];
                                 }
                                 else if(lang == 'English') {
-                                    cities = ["Total", "Seoul", "Jeju", "Gyeongsangnam-do", "Gyeongsangbuk-do", "Jeollanam-do", "Jeollabuk-do", "Chungcheongnam-do", "Chungcheongbuk-do", "Gangwon-do", "Gyeonggi-do", "Sejong", "Ulsan",
-                                    "Daejeon", "Gwangju", "Incheon", "Daegu", "Busan"];
+                                    cities = ["Total", "Seoul", "Jeju", "Gyeongsangnam-do", "Gyeongsangbuk-do", "Jeollanam-do", "Jeollabuk-do", "Chungcheongnam-do", "Chungcheongbuk-do", "Gangwon-do", "Gyeonggi-do", "Sejong", "Ulsan", "Daejeon", "Gwangju", "Incheon", "Daegu", "Busan"];
+                                }
+                                else if(lang == "中文") {
+                                    cities = ["合计", "首尔", "济州", "庆南", "庆北", "全南", "全北", "忠南", "忠北", "江原", "京畿", "世宗", "蔚山", "大田", "光州", "仁川", "大邱", "釜山"];
                                 }
 
                                 cities.forEach( (city) => {
@@ -128,6 +140,8 @@
                         cityData = items.filter ( (item) => item.gubun ==  city );
                     else if(lang == "English")
                         cityData = items.filter ( (item) => item.gubunEn ==  city );
+                    else if(lang == "中文")
+                        cityData = items.filter ( (item) => item.gubunCn ==  city );
 
                     $("#result").empty();   // 새롭게 버튼을 누를 경우 result 초기화.
                     
@@ -158,6 +172,18 @@
                                 '<p class=\"content\"><b>Overseas inflow:</b> ' + item.overFlowCnt + ' </p>',
                                 '<p class=\"content\">As of ' + item.stdDay + '</p>'
                             );
+                        }
+                        else if(lang == "中文") {
+                            result.prepend('<h2 class=\"content\">' + city + "'s COVID-19 infomations");
+
+                            result.append(
+                                '<p class=\"content\"><b>其他确诊病例:</b> ' + item.incDec + ' </p>',
+                                '<p class=\"content\"><b>累计确诊病例:</b> ' + item.defCnt + ' </p>',
+                                '<p class=\"content\"><b>累积固化:</b> ' + item.isolClearCnt + ' </p>',
+                                '<p class=\"content\"><b>累计死亡:</b> ' + item.deathCnt + ' </p>',
+                                '<p class=\"content\"><b>外国流入:</b> ' + item.overFlowCnt + ' </p>',
+                                '<p class=\"content\">' + item.stdDay + '标准</p>'
+                            ); 
                         }
                     }
                 )
