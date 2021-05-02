@@ -32,11 +32,11 @@
                             PrintButton();
 
                             $('#lang_button input[type=button]').on('click', function(value) {
+                                $('title').empty();
+                                $('legend').empty();
+                                $('#title_name').empty();
+                                
                                 if($(this).val() == "한국어") {
-                                    $('title').empty();
-                                    $('legend').empty();
-                                    $('#title_name').empty();
-
                                     $('title').prepend('코로나19 감염자 현황');
                                     $('legend').prepend('도시 선택');
                                     $('#title_name').prepend('<h1>코로나19 현황 조회하기</h1>');
@@ -44,10 +44,6 @@
                                     lang = "한국어";
                                 }
                                 else if($(this).val() == "English") {
-                                    $('title').empty();
-                                    $('legend').empty();
-                                    $('#title_name').empty();
-
                                     $('title').prepend('COVID-19 Infected Status');
                                     $('legend').prepend('Select the city');
                                     $('#title_name').prepend('<h1>COVID-19 Status</h1>');
@@ -55,9 +51,7 @@
                                     lang = "English";
                                 }
                                 else if($(this).val() == "中文") {
-                                    $('title').empty();
-                                    $('legend').empty();
-                                    $('#title_name').empty();
+
 
                                     $('title').prepend('COVID-19 感染者状况');
                                     $('legend').prepend('城市选择');
