@@ -20,20 +20,6 @@
             </script>
         </div>
         <div id="title_name"><h1>코로나19 현황 조회하기</h1></div>
-        <script>
-            var lang = '한국어';
-
-            $('#lang_button input[type=button]').on('click', function(value) {
-                if($(this).val() == '한국어') {
-                    $('#title_name').empty();
-                    $('#title_name').prepend('<h1>코로나19 현황 조회하기</h1>');
-                }
-                else if($(this).val() == 'English') {
-                    $('#title_name').empty();
-                    $('#title_name').prepend('<h1>Covid19 Status</h1>');
-                }
-            })
-        </script>
     </header>
     <section>
         <fieldset>
@@ -45,10 +31,16 @@
                             PrintButton();
 
                             $('#lang_button input[type=button]').on('click', function(value) {
-                                if($(this).val() == "한국어")
+                                if($(this).val() == "한국어") {
+                                    $('#title_name').empty();
+                                    $('#title_name').prepend('<h1>코로나19 현황 조회하기</h1>');
                                     lang = "한국어";
-                                else if($(this).val() == "English")
+                                }
+                                else if($(this).val() == "English") {
+                                    $('#title_name').empty();
+                                    $('#title_name').prepend('<h1>Covid19 Status</h1>');
                                     lang = "English";
+                                }
 
                                 PrintButton();
                                     
