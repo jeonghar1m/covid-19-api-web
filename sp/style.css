@@ -1,8 +1,6 @@
 body {margin:15% auto;}
-#title_name{text-align: center;}
 div#lang_button{text-align: right;}
-section{text-align: center;}
+header, section, .content, #title_name{text-align: center;}
 table {margin: 0 auto;}
 table > tr > td {margin:1% 30%}
-.content {text-align: center;}
 p#copy {margin:1% 30%;}
