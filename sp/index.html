@@ -37,23 +37,23 @@
                                 $('#title_name').empty();
                                 
                                 if($(this).val() == "한국어") {
-                                    $('title').prepend('코로나19 감염자 현황');
-                                    $('legend').prepend('도시 선택');
-                                    $('#title_name').prepend('<h1>코로나19 현황 조회하기</h1>');
+                                    $('title').text('코로나19 감염자 현황');
+                                    $('legend').text('도시 선택');
+                                    $('#title_name').html('<h1>코로나19 현황 조회하기</h1>');
 
                                     lang = "한국어";
                                 }
                                 else if($(this).val() == "English") {
-                                    $('title').prepend('COVID-19 Infected Status');
-                                    $('legend').prepend('Select the city');
-                                    $('#title_name').prepend('<h1>COVID-19 Status</h1>');
+                                    $('title').text('COVID-19 Infected Status');
+                                    $('legend').text('Select the city');
+                                    $('#title_name').html('<h1>COVID-19 Status</h1>');
 
                                     lang = "English";
                                 }
                                 else if($(this).val() == "中文") {
-                                    $('title').prepend('COVID-19 感染者状况');
-                                    $('legend').prepend('城市选择');
-                                    $('#title_name').prepend('<h1>COVID-19 查询状态</h1>');
+                                    $('title').text('COVID-19 感染者状况');
+                                    $('legend').text('城市选择');
+                                    $('#title_name').html('<h1>COVID-19 查询状态</h1>');
 
                                     lang = "中文";  
                                 }
