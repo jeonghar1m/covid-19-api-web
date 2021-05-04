@@ -5,21 +5,21 @@ $('#lang_button input[type=button]').on('click', function(value) {
     if($(this).val() == "한국어") {
         $('title').text('코로나19 감염자 현황');
         $('legend').text('도시 선택');
-        $('#title_name').html('<h1>코로나19 현황 조회하기</h1>');
+        $('#title_name > h1').text('코로나19 현황 조회하기');
 
         lang = "한국어";
     }
     else if($(this).val() == "English") {
         $('title').text('COVID-19 Infected Status');
         $('legend').text('Select the city');
-        $('#title_name').html('<h1>COVID-19 Status</h1>');
+        $('#title_name > h1').text('COVID-19 Status');
 
         lang = "English";
     }
     else if($(this).val() == "中文") {
         $('title').text('COVID-19 感染者状况');
         $('legend').text('城市选择');
-        $('#title_name').html('<h1>COVID-19 查询状态</h1>');
+        $('#title_name > h1').text('COVID-19 查询状态');
 
         lang = "中文";  
     }
