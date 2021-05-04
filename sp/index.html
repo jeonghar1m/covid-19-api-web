@@ -137,9 +137,9 @@
                     cityData.forEach( (item) => {
                         if(lang == "한국어") {
                             if(city == "합계")
-                                result.prepend('<h2 class=\"content\">전국의 코로나19 감염자 현황</h2>');
+                                result.html('<h2 class=\"content\">전국의 코로나19 감염자 현황</h2>');
                             else
-                                result.prepend('<h2 class=\"content\">' + city + '의 코로나19 감염자 현황</h2>');
+                                result.html('<h2 class=\"content\">' + city + '의 코로나19 감염자 현황</h2>');
 
                             result.append(
                                 '<p class=\"content\"><b>추가 확진자:</b> ' + item.incDec + ' </p>',
