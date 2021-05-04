@@ -31,11 +31,7 @@
                             var lang = '한국어';    // 기본값 한국어
                             PrintButton();
 
-                            $('#lang_button input[type=button]').on('click', function(value) {
-                                $('title').empty();
-                                $('legend').empty();
-                                $('#title_name').empty();
-                                
+                            $('#lang_button input[type=button]').on('click', function(value) {                                
                                 if($(this).val() == "한국어") {
                                     $('title').text('코로나19 감염자 현황');
                                     $('legend').text('도시 선택');
@@ -151,7 +147,7 @@
                             );
                         }
                         else if(lang == "English") {
-                            result.prepend('<h2 class=\"content\">' + city + "'s COVID-19 infomations");
+                            result.html('<h2 class=\"content\">' + city + "'s COVID-19 infomations");
 
                             result.append(
                                 '<p class=\"content\"><b>New Confirmed persons:</b> ' + item.incDec + ' </p>',
@@ -163,7 +159,7 @@
                             );
                         }
                         else if(lang == "中文") {
-                            result.prepend('<h2 class=\"content\">' + city + " COVID-19 信息");
+                            result.html('<h2 class=\"content\">' + city + " COVID-19 信息");
 
                             result.append(
                                 '<p class=\"content\"><b>其他确诊病例:</b> ' + item.incDec + ' </p>',
