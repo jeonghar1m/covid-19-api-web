@@ -17,8 +17,6 @@ $('#lang_button input[type=button]').on('click', function(value) {
     $('#title_name > h1').text(contentTexts[2]);
 
     PrintButton();
-        
-    console.log("Button Language: " + lang);
 })
 
 function PrintButton() {

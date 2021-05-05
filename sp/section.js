@@ -5,8 +5,6 @@ ClickCityButton();
 
 $('#lang_button input[type=button]').on('click', function(value) {
     lang = $(this).val();
-    console.log("Result Language: " + lang);
-
     ClickCityButton();
 })
 
@@ -16,8 +14,6 @@ function ClickCityButton() {
             city = "합계";
         else
             city = $(this).val();   // button의 value를 지역변수 city에 대입.
-
-        console.log(city);
             
         PrintResult();
     })
