@@ -1,10 +1,11 @@
-var lang = '한국어';    // 기본값 한국어
+let lang = '한국어';    // Set default value
 PrintButton();
 
 $('#lang_button input[type=button]').on('click', function(value) {                                
     lang = $(this).val();
 
     let contentTexts;
+
     if(lang == "한국어")
         contentTexts = ['코로나19 감염자 현황', '도시 선택', '코로나19 현황 조회하기'];
     else if(lang == "English")
