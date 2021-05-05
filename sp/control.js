@@ -1,5 +1,6 @@
 const langs = ['한국어', 'English', '中文'];
 let lang = '한국어';    // Set default value
+let city = "합계";  // 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
 
 langs.forEach((lang)=> {
     $("#lang_button").append(
@@ -8,6 +9,8 @@ langs.forEach((lang)=> {
 })
 
 PrintButton();
+PrintResult();
+ClickCityButton();
 
 $('#lang_button input[type=button]').on('click', function(value) {                                
     lang = $(this).val();
@@ -45,10 +48,6 @@ function PrintButton() {
         );
     })
 }
-
-var city = "합계";  // 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
-PrintResult();
-ClickCityButton();
 
 $('#lang_button input[type=button]').on('click', function(value) {
     lang = $(this).val();
