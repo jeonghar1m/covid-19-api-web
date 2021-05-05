@@ -31,6 +31,11 @@ $('#lang_button input[type=button]').on('click', function(value) {
     PrintCityButton();
 })
 
+$('#lang_button input[type=button]').on('click', function(value) {
+    lang = $(this).val();
+    ClickCityButton();
+})
+
 function PrintCityButton() {
     $("#cities").empty();
     let cities;
@@ -48,11 +53,6 @@ function PrintCityButton() {
         );
     })
 }
-
-$('#lang_button input[type=button]').on('click', function(value) {
-    lang = $(this).val();
-    ClickCityButton();
-})
 
 function ClickCityButton() {
     $('#cities input[type=button]').on('click', function(value) {
