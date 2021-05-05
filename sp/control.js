@@ -8,7 +8,7 @@ langs.forEach((lang)=> {
     );
 })
 
-PrintButton();
+PrintCityButton();
 PrintResult();
 ClickCityButton();
 
@@ -28,10 +28,10 @@ $('#lang_button input[type=button]').on('click', function(value) {
     $('legend').text(contentTexts[1]);
     $('#title_name > h1').text(contentTexts[2]);
 
-    PrintButton();
+    PrintCityButton();
 })
 
-function PrintButton() {
+function PrintCityButton() {
     $("#cities").empty();
     let cities;
 
