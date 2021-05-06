@@ -84,45 +84,26 @@ function PrintResult() {
             $("#result").empty();   // 새롭게 버튼을 누를 경우 result 초기화.
             
             cityData.forEach( (item) => {
-                let incDecText, defCntText, isolClearCntText, deathCntText, overFlowCntText;
+                let outputText;
 
-                if(lang == "한국어") {
-                    if(city == "합계")
-                        result.html('<h2 class=\"content\">전국의 코로나19 감염자 현황</h2>');
-                    else
-                        result.html('<h2 class=\"content\">' + city + '의 코로나19 감염자 현황</h2>');
+                if(lang == "한국어")
+                    outputText = ['의 코로나19 감염자 현황', '추가 확진자', '누적 확진자', '누적 완치자', '누적 사망자', '해외 유입자'];
+                else if(lang == "English")
+                    outputText = ['\'s COVID-19 infomations', 'New Confirmed Persons', 'Accumulate Confirmed persons', 'Accumulate Cure persons', 'Accumulate Deaths', 'Overseas inflow'];
+                else if(lang == "中文")
+                    outputText = [' COVID-19 信息', '其他确诊病例', '累计确诊病例', '累积固化', '累计死亡', '外国流入'];
 
-                    incDecText = "추가 확진자";
-                    defCntText = "누적 확진자";
-                    isolClearCntText = "누적 완치자";
-                    deathCntText = "누적 사망자";
-                    overFlowCntText = "해외 유입자";
-                }
-                else if(lang == "English") {
-                    result.html('<h2 class=\"content\">' + city + "'s COVID-19 infomations");
-
-                    incDecText = "New Confirmed Persons";
-                    defCntText = "Accumulate Confirmed persons";
-                    isolClearCntText = "Accumulate Cure person";
-                    deathCntText = "Accumulate Deaths";
-                    overFlowCntText = "Overseas inflow";
-                }
-                else if(lang == "中文") {
-                    result.html('<h2 class=\"content\">' + city + " COVID-19 信息");
-
-                    incDecText = "其他确诊病例";
-                    defCntText = "累计确诊病例";
-                    isolClearCntText = "累积固化";
-                    deathCntText = "累计死亡";
-                    overFlowCntText = "外国流入";
-                }
+                if(lang == "한국어" && city == "합계")  // "합계"가 아닌 "전국"으로 출력해주기 위해 조건문 구현
+                    result.html(`<h2 class=\"content\">전국${outputText[0]}</h2>`)
+                else
+                    result.html(`<h2 class=\"content\">${city}${outputText[0]}</h2>`)
 
                 result.append(
-                    `<p class="\content\"><b>${incDecText}:</b> ${item.incDec}</p>`,
-                    `<p class="\content\"><b>${defCntText}:</b> ${item.defCnt}</p>`,
-                    `<p class="\content\"><b>${isolClearCntText}:</b> ${item.isolClearCnt}</p>`,
-                    `<p class="\content\"><b>${deathCntText}:</b> ${item.deathCnt}</p>`,
-                    `<p class="\content\"><b>${overFlowCntText}:</b> ${item.overFlowCnt}</p>`,
+                    `<p class="\content\"><b>${outputText[1]}:</b> ${item.incDec}</p>`,
+                    `<p class="\content\"><b>${outputText[2]}:</b> ${item.defCnt}</p>`,
+                    `<p class="\content\"><b>${outputText[3]}:</b> ${item.isolClearCnt}</p>`,
+                    `<p class="\content\"><b>${outputText[4]}:</b> ${item.deathCnt}</p>`,
+                    `<p class="\content\"><b>${outputText[5]}:</b> ${item.overFlowCnt}</p>`,
                 );
             }
         )
