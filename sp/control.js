@@ -15,7 +15,7 @@ ClickCityButton();
 $('#lang_button input[type=button]').on('click', function(value) {                                
     lang = $(this).val();
 
-    let contentTexts;
+    let contentTexts = undefined;
 
     if(lang == "한국어")
         contentTexts = ['코로나19 감염자 현황', '도시 선택', '코로나19 현황 조회하기'];
@@ -38,7 +38,7 @@ $('#lang_button input[type=button]').on('click', function(value) {
 
 function PrintCityButton() {
     $("#cities").empty();
-    let cities;
+    let cities = undefined;
 
     if(lang == '한국어')
         cities = ["전국", "서울", "제주", "경남", "경북", "전남", "전북", "충남", "충북", "강원", "경기", "세종", "울산", "대전", "광주", "인천", "대구", "부산"];
@@ -73,7 +73,7 @@ function PrintResult() {
         .then ( (data) => {
             let result = $('#result');
             let items = data.items.item;
-            let cityData;
+            let cityData = undefined;
             if(lang == "한국어")
                 cityData = items.filter ( (item) => item.gubun ==  city );
             else if(lang == "English")
@@ -84,7 +84,7 @@ function PrintResult() {
             $("#result").empty();   // 새롭게 버튼을 누를 경우 result 초기화.
             
             cityData.forEach( (item) => {
-                let outputText;
+                let outputText = undefined;
 
                 if(lang == "한국어")
                     outputText = ['의 코로나19 감염자 현황', '추가 확진자', '누적 확진자', '누적 완치자', '누적 사망자', '해외 유입자'];
