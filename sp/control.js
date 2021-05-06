@@ -4,7 +4,7 @@ let city = "합계";  // 맨 처음 사이트 접속시 기본적으로 전국 �
 
 langs.forEach((lang)=> {
     $("#lang_button").append(
-        '<input type="button" value="' + lang + '" />'
+        `<input type="button" value="${lang}" />`
     );
 })
 
