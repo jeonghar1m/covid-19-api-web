@@ -49,7 +49,7 @@ function PrintCityButton() {
 
     cities.forEach( (city) => {
         $("#cities").append(
-            '<input type="button" value="' + city + '" />'
+            `<input type="button" value="${city}" />`
         );
     })
 }
