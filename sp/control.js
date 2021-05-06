@@ -24,8 +24,8 @@ $('#lang_button input[type=button]').on('click', function(value) {
     else if(lang == "中文")
         contentTexts = ['COVID-19 感染者状况', '城市选择', 'COVID-19 查询状态'];
 
-    $('title').text(contentTexts[0]);
-    $('legend').text(contentTexts[1]);
+    $('head > title').text(contentTexts[0]);
+    $('#select > legend').text(contentTexts[1]);
     $('#title_name > h1').text(contentTexts[2]);
 
     PrintCityButton();
