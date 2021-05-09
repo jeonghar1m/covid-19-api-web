@@ -2,7 +2,7 @@
     header('Content-Type: application/json');
 
     $ch = curl_init();
-    $url = 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=sido'; /*URL*/
+    $url = 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=sido';
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
