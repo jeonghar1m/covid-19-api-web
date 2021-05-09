@@ -18,7 +18,7 @@ PrintVaccineResult()
 $('#lang_button input[type=button]').on('click', function(value) {                                
     lang = $(this).val();
 
-    let contentTexts = undefined;
+    let contentTexts;
 
     if(lang == '한국어')
         contentTexts = ['코로나19 감염자 현황', '도시 선택', '코로나19 현황 조회하기'];
@@ -40,7 +40,7 @@ $('#lang_button input[type=button]').on('click', function(value) {
 })
 
 function PrintCityButton() {
-    let cities = undefined;
+    let cities;
 
     $('#cities').empty();
 
@@ -114,7 +114,7 @@ function PrintResult() {
         .then ( (data) => {
             let result = $('#result');
             let items = data.items.item;
-            let cityData = undefined;
+            let cityData;
 
             if(lang == '한국어')
                 cityData = items.filter ( (item) => item.gubun ==  city );
@@ -126,7 +126,7 @@ function PrintResult() {
             $('#result').empty();   // 새롭게 버튼을 누를 경우 result 초기화.
             
             cityData.forEach( (item) => {
-                let outputText = undefined;
+                let outputTextd;
 
                 if(lang == '한국어')
                     outputText = ['의 코로나19 감염자 현황', '추가 확진자', '누적 확진자', '누적 완치자', '누적 사망자', '해외 유입자'];
@@ -154,7 +154,7 @@ function PrintResult() {
 
 function PrintVaccineResult() {
     let result = $('#vaccine');
-    let cityData = undefined;
+    let cityData;
     let outputText = ['금일 1차 접종', '금일 2차 접종', '누적 1차 접종', '누적 2차 접종'];
 
     result.html(`<h2 class='content'>백신 접종 현황</h3>`);
