@@ -1,5 +1,5 @@
 const langs = ['한국어', 'English', '中文'];
-let lang = '한국어';    // Set default value
+let lang = '한국어';    // Set default language value
 // 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
 let city = '합계';
 let vaccineCity = '합계';
