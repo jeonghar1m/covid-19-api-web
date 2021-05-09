@@ -156,6 +156,7 @@ function PrintVaccineResult() {
     let result = $('#vaccine');
     let cityData = undefined;
 
+    result.html(`<h2 class='content'>백신 접종 현황</h3>`);
     if(vaccineCity == '합계') {
         fetch('vaccine.php?list=all')
         .then( (response) => {
@@ -163,8 +164,6 @@ function PrintVaccineResult() {
         })
         .then ( (data) => {
             let items = data.items.item;
-    
-            result.html(`<h2 class='content'>백신 접종 현황</h3>`);
     
             result.append(
                 `<p class=content'><b>금일 1차 접종: </b> ${items[0].firstCnt}</p>`,
@@ -182,9 +181,7 @@ function PrintVaccineResult() {
         .then ( (data) => {
             let items = data.items.item;
             cityData = items.filter( (item) => item.sidoNm == vaccineCity )
-            cityData.forEach( (item) => {
-                result.html(`<h2 class='content'>백신 접종 현황</h3>`);
-    
+            cityData.forEach( (item) => {    
                 result.append(
                     `<p class=content'><b>금일 1차 접종: </b> ${item.firstCnt}</p>`,
                     `<p class=content'><b>금일 2차 접종: </b> ${item.secondCnt}</p>`,
