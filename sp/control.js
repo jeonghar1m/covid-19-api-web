@@ -155,6 +155,7 @@ function PrintResult() {
 function PrintVaccineResult() {
     let result = $('#vaccine');
     let cityData = undefined;
+    let outputText = ['금일 1차 접종', '금일 2차 접종', '누적 1차 접종', '누적 2차 접종'];
 
     result.html(`<h2 class='content'>백신 접종 현황</h3>`);
     if(vaccineCity == '합계') {
@@ -166,10 +167,10 @@ function PrintVaccineResult() {
             let items = data.items.item;
     
             result.append(
-                `<p class=content'><b>금일 1차 접종: </b> ${items[0].firstCnt}</p>`,
-                `<p class=content'><b>금일 2차 접종: </b> ${items[0].secondCnt}</p>`,
-                `<p class=content'><b>누적 1차 접종: </b> ${items[2].firstCnt}</p>`,
-                `<p class=content'><b>누적 2차 접종: </b> ${items[2].secondCnt}</p>`
+                `<p class=content'><b>${outputText[0]}: </b> ${items[0].firstCnt}</p>`,
+                `<p class=content'><b>${outputText[1]}: </b> ${items[0].secondCnt}</p>`,
+                `<p class=content'><b>${outputText[2]}: </b> ${items[2].firstCnt}</p>`,
+                `<p class=content'><b>${outputText[3]}: </b> ${items[2].secondCnt}</p>`
             )
         })
     }
@@ -183,10 +184,10 @@ function PrintVaccineResult() {
             cityData = items.filter( (item) => item.sidoNm == vaccineCity )
             cityData.forEach( (item) => {    
                 result.append(
-                    `<p class=content'><b>금일 1차 접종: </b> ${item.firstCnt}</p>`,
-                    `<p class=content'><b>금일 2차 접종: </b> ${item.secondCnt}</p>`,
-                    `<p class=content'><b>누적 1차 접종: </b> ${item.firstTot}</p>`,
-                    `<p class=content'><b>누적 2차 접종: </b> ${item.secondTot}</p>`
+                    `<p class=content'><b>${outputText[0]}: </b> ${item.firstCnt}</p>`,
+                    `<p class=content'><b>${outputText[1]}: </b> ${item.secondCnt}</p>`,
+                    `<p class=content'><b>${outputText[2]}: </b> ${item.firstTot}</p>`,
+                    `<p class=content'><b>${outputText[3]}: </b> ${item.secondTot}</p>`
                 )
             })
         })
