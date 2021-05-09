@@ -123,7 +123,7 @@ function PrintResult() {
             else if(lang == '中文')
                 cityData = items.filter ( (item) => item.gubunCn ==  city );
 
-            $('#result').empty();   // 새롭게 버튼을 누를 경우 result 초기화.
+            result.empty();   // 새롭게 버튼을 누를 경우 result 초기화.
             
             cityData.forEach( (item) => {
                 let outputText;
@@ -157,6 +157,7 @@ function PrintVaccineResult() {
     let cityData;
     let outputText = ['금일 1차 접종', '금일 2차 접종', '누적 1차 접종', '누적 2차 접종'];
 
+    result.empty();
     result.html(`<h2 class='content'>백신 접종 현황</h3>`);
     if(vaccineCity == '합계') {
         fetch('vaccine.php?list=all')
