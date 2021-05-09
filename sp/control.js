@@ -68,30 +68,37 @@ function ClickCityButton() {
         else {
             city = clickValue;   // button의 value를 지역변수 city에 대입.
 
-            if(clickValue == '서울')
-                vaccineCity = '서울특별시';
-            else if(clickValue == '울산' || clickValue == '대전' || clickValue == '광주' || clickValue == '인천' || clickValue == '대구' || clickValue == '부산')   // 광역시
-                vaccineCity = `${clickValue}광역시`;
-            else if(clickValue == '제주')
-                vaccineCity = '제주특별자치도';
-            else if(clickValue == '경남')
-                vaccineCity = '경상남도';
-            else if(clickValue == '경북')
-                vaccineCity = '경상북도';
-            else if(clickValue == '전남')
-                vaccineCity = '전라남도';
-            else if(clickValue == '전북')
-                vaccineCity = '전라북도';
-            else if(clickValue == '충남')
-                vaccineCity = '충청남도';
-            else if(clickValue == '충북')
-                vaccineCity = '충청북도';
-            else if(clickValue == '강원')
-                vaccineCity = '강원도';
-            else if(clickValue == '경기')
-                vaccineCity = '경기도';
-            else if(clickValue == '세종')
-                vaccineCity = '세종특별자치시';
+            switch(clickValue) {
+                case '서울': vaccineCity = '서울특별시'
+                break;
+                case '울산':
+                case '대전':
+                case '광주':
+                case '인천':
+                case '대구':
+                case '부산': vaccineCity = `${clickValue}광역시`;
+                break;
+                case '제주': vaccineCity = '제주특별자치도';
+                break;
+                case '경남': vaccineCity = '경상남도';
+                break;
+                case '경북': vaccineCity = '경상북도';
+                break;
+                case '전남': vaccineCity = '전라남도';
+                break;
+                case '전북': vaccineCity = '전라북도';
+                break;
+                case '충남': vaccineCity = '충청남도';
+                break;
+                case '충북': vaccineCity = '충청북도';
+                break;
+                case '강원': vaccineCity = '강원도';
+                break;
+                case '경기': vaccineCity = '경기도';
+                break;
+                case '세종': vaccineCity = '세종특별자치시';
+                break;
+            }
         }
             
         PrintResult();
