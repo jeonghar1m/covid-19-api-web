@@ -126,7 +126,7 @@ function PrintResult() {
             $('#result').empty();   // 새롭게 버튼을 누를 경우 result 초기화.
             
             cityData.forEach( (item) => {
-                let outputTextd;
+                let outputText;
 
                 if(lang == '한국어')
                     outputText = ['의 코로나19 감염자 현황', '추가 확진자', '누적 확진자', '누적 완치자', '누적 사망자', '해외 유입자'];
