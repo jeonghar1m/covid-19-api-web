@@ -11,7 +11,7 @@ langs.forEach((lang)=> {
 })
 
 PrintCityButton();
-PrintResult();
+PrintInfectionResult();
 ClickCityButton();
 PrintVaccineResult()
 
@@ -101,13 +101,13 @@ function ClickCityButton() {
             }
         }
             
-        PrintResult();
+        PrintInfectionResult();
         PrintVaccineResult();
     })
 }
 
-function PrintResult() {
-    fetch('result.php')
+function PrintInfectionResult() {
+    fetch('infection.php')
         .then( (response) => {
             return response.json();
         })
