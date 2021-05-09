@@ -141,11 +141,11 @@ function PrintResult() {
                     result.html(`<h2 class='content'>${city}${outputText[0]}</h2>`)
 
                 result.append(
-                    `<p class='content'><b>${outputText[1]}:</b> ${item.incDec}</p>`,
-                    `<p class='content'><b>${outputText[2]}:</b> ${item.defCnt}</p>`,
-                    `<p class='content'><b>${outputText[3]}:</b> ${item.isolClearCnt}</p>`,
-                    `<p class='content'><b>${outputText[4]}:</b> ${item.deathCnt}</p>`,
-                    `<p class='content'><b>${outputText[5]}:</b> ${item.overFlowCnt}</p>`
+                    `<p class='content'><b>${outputText[1]}:</b> ${item.incDec}명</p>`,
+                    `<p class='content'><b>${outputText[2]}:</b> ${item.defCnt}명</p>`,
+                    `<p class='content'><b>${outputText[3]}:</b> ${item.isolClearCnt}명</p>`,
+                    `<p class='content'><b>${outputText[4]}:</b> ${item.deathCnt}명</p>`,
+                    `<p class='content'><b>${outputText[5]}:</b> ${item.overFlowCnt}명</p>`
                 );
             }
         )
@@ -167,10 +167,10 @@ function PrintVaccineResult() {
             let items = data.items.item;
     
             result.append(
-                `<p class=content'><b>${outputText[0]}: </b> ${items[0].firstCnt}</p>`,
-                `<p class=content'><b>${outputText[1]}: </b> ${items[0].secondCnt}</p>`,
-                `<p class=content'><b>${outputText[2]}: </b> ${items[2].firstCnt}</p>`,
-                `<p class=content'><b>${outputText[3]}: </b> ${items[2].secondCnt}</p>`
+                `<p class=content'><b>${outputText[0]}: </b> ${items[0].firstCnt}명</p>`,
+                `<p class=content'><b>${outputText[1]}: </b> ${items[0].secondCnt}명</p>`,
+                `<p class=content'><b>${outputText[2]}: </b> ${items[2].firstCnt}명</p>`,
+                `<p class=content'><b>${outputText[3]}: </b> ${items[2].secondCnt}명</p>`
             )
         })
     }
@@ -184,10 +184,10 @@ function PrintVaccineResult() {
             cityData = items.filter( (item) => item.sidoNm == vaccineCity )
             cityData.forEach( (item) => {    
                 result.append(
-                    `<p class=content'><b>${outputText[0]}: </b> ${item.firstCnt}</p>`,
-                    `<p class=content'><b>${outputText[1]}: </b> ${item.secondCnt}</p>`,
-                    `<p class=content'><b>${outputText[2]}: </b> ${item.firstTot}</p>`,
-                    `<p class=content'><b>${outputText[3]}: </b> ${item.secondTot}</p>`
+                    `<p class=content'><b>${outputText[0]}: </b> ${item.firstCnt}명</p>`,
+                    `<p class=content'><b>${outputText[1]}: </b> ${item.secondCnt}명</p>`,
+                    `<p class=content'><b>${outputText[2]}: </b> ${item.firstTot}명</p>`,
+                    `<p class=content'><b>${outputText[3]}: </b> ${item.secondTot}명</p>`
                 )
             })
         })
