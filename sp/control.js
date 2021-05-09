@@ -1,6 +1,8 @@
 const langs = ['한국어', 'English', '中文'];
 let lang = '한국어';    // Set default value
-let city = '합계';  // 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
+// 맨 처음 사이트 접속시 기본적으로 전국 정보 출력
+let city = '합계';
+let vaccineCity = '합계';
 
 langs.forEach((lang)=> {
     $('#lang_button').append(
@@ -11,6 +13,7 @@ langs.forEach((lang)=> {
 PrintCityButton();
 PrintResult();
 ClickCityButton();
+PrintVaccineResult()
 
 $('#lang_button input[type=button]').on('click', function(value) {                                
     lang = $(this).val();
@@ -57,12 +60,42 @@ function PrintCityButton() {
 
 function ClickCityButton() {
     $('#cities input[type=button]').on('click', function(value) {
-        if($(this).val() == '전국')
+        let clickValue = $(this).val();
+        if(clickValue == '전국') {
             city = '합계';
-        else
-            city = $(this).val();   // button의 value를 지역변수 city에 대입.
+            vaccineCity = '합계';
+        }
+        else {
+            city = clickValue;   // button의 value를 지역변수 city에 대입.
+
+            if(clickValue == '서울')
+                vaccineCity = '서울특별시';
+            else if(clickValue == '울산' || clickValue == '대전' || clickValue == '광주' || clickValue == '인천' || clickValue == '대구' || clickValue == '부산')   // 광역시
+                vaccineCity = `${clickValue}광역시`;
+            else if(clickValue == '제주')
+                vaccineCity = '제주특별자치도';
+            else if(clickValue == '경남')
+                vaccineCity = '경상남도';
+            else if(clickValue == '경북')
+                vaccineCity = '경상북도';
+            else if(clickValue == '전남')
+                vaccineCity = '전라남도';
+            else if(clickValue == '전북')
+                vaccineCity = '전라북도';
+            else if(clickValue == '충남')
+                vaccineCity = '충청남도';
+            else if(clickValue == '충북')
+                vaccineCity = '충청북도';
+            else if(clickValue == '강원')
+                vaccineCity = '강원도';
+            else if(clickValue == '경기')
+                vaccineCity = '경기도';
+            else if(clickValue == '세종')
+                vaccineCity = '세종특별자치시';
+        }
             
         PrintResult();
+        PrintVaccineResult();
     })
 }
 
@@ -96,18 +129,62 @@ function PrintResult() {
                     outputText = [' COVID-19 信息', '其他确诊病例', '累计确诊病例', '累积固化', '累计死亡', '外国流入'];
 
                 if(lang == '한국어' && city == '합계')  // '합계'가 아닌 '전국'으로 출력해주기 위해 조건문 구현
-                    result.html(`<h2 class=\'content\'>전국${outputText[0]}</h2>`)
+                    result.html(`<h2 class='content'>전국${outputText[0]}</h2>`)
                 else
-                    result.html(`<h2 class=\'content\'>${city}${outputText[0]}</h2>`)
+                    result.html(`<h2 class='content'>${city}${outputText[0]}</h2>`)
 
                 result.append(
-                    `<p class='\content\'><b>${outputText[1]}:</b> ${item.incDec}</p>`,
-                    `<p class='\content\'><b>${outputText[2]}:</b> ${item.defCnt}</p>`,
-                    `<p class='\content\'><b>${outputText[3]}:</b> ${item.isolClearCnt}</p>`,
-                    `<p class='\content\'><b>${outputText[4]}:</b> ${item.deathCnt}</p>`,
-                    `<p class='\content\'><b>${outputText[5]}:</b> ${item.overFlowCnt}</p>`,
+                    `<p class='content'><b>${outputText[1]}:</b> ${item.incDec}</p>`,
+                    `<p class='content'><b>${outputText[2]}:</b> ${item.defCnt}</p>`,
+                    `<p class='content'><b>${outputText[3]}:</b> ${item.isolClearCnt}</p>`,
+                    `<p class='content'><b>${outputText[4]}:</b> ${item.deathCnt}</p>`,
+                    `<p class='content'><b>${outputText[5]}:</b> ${item.overFlowCnt}</p>`
                 );
             }
         )
     });
+}
+
+function PrintVaccineResult() {
+    let result = $('#vaccine');
+    let cityData = undefined;
+
+    if(vaccineCity == '합계') {
+        fetch('vaccine.php?list=all')
+        .then( (response) => {
+            return response.json();
+        })
+        .then ( (data) => {
+            let items = data.items.item;
+    
+            result.html(`<h2 class='content'>백신 접종 현황</h3>`);
+    
+            result.append(
+                `<p class=content'><b>금일 1차 접종: </b> ${items[0].firstCnt}</p>`,
+                `<p class=content'><b>금일 2차 접종: </b> ${items[0].secondCnt}</p>`,
+                `<p class=content'><b>누적 1차 접종: </b> ${items[2].firstCnt}</p>`,
+                `<p class=content'><b>누적 2차 접종: </b> ${items[2].secondCnt}</p>`
+            )
+        })
+    }
+    else {
+        fetch('vaccine.php?list=sido')
+        .then( (response) => {
+            return response.json();
+        })
+        .then ( (data) => {
+            let items = data.items.item;
+            cityData = items.filter( (item) => item.sidoNm == vaccineCity )
+            cityData.forEach( (item) => {
+                result.html(`<h2 class='content'>백신 접종 현황</h3>`);
+    
+                result.append(
+                    `<p class=content'><b>금일 1차 접종: </b> ${item.firstCnt}</p>`,
+                    `<p class=content'><b>금일 2차 접종: </b> ${item.secondCnt}</p>`,
+                    `<p class=content'><b>누적 1차 접종: </b> ${item.firstTot}</p>`,
+                    `<p class=content'><b>누적 2차 접종: </b> ${item.secondTot}</p>`
+                )
+            })
+        })
+    }
 }

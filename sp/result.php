@@ -19,6 +19,6 @@
     curl_close($ch);
 
     $xml = simplexml_load_string($response);
-    $json = json_encode($xml -> body);
+    $json = json_encode($xml -> body, JSON_UNESCAPED_UNICODE);
     echo $json;
 ?>
