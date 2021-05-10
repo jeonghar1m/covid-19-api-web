@@ -155,7 +155,7 @@ function PrintInfectionResult() {
 function PrintVaccineResult() {
     let result = $('#vaccine');
     let cityData;
-    let outputText = ['금일 1차 접종', '금일 2차 접종', '누적 1차 접종', '누적 2차 접종'];
+    let outputText = ['신규 1차 접종자', '신규 2차 접종자', '누적 1차 접종자', '누적 2차 접종자'];
 
     result.empty();
     result.html(`<h2 class='content'>백신 접종 현황</h3>`);
